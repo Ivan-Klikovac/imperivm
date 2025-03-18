@@ -6,6 +6,7 @@
 #include <ctype.h>
 
 token* tokens;
+int has_error = 0;
 
 void token_new(token* new, int line, token_type type, char* lexeme, int length)
 {
@@ -259,33 +260,6 @@ void run(char* src)
                 else token_new(&tokens[n++], line, IDENTIFIER, start, (current - start) + 1);
             }
 
-            // I CBA TO SUPPORT ANYTHING BUT 64-BIT INTEGERS and maybe floats
-            // maybe later
-
-            /*else if(strncmp(current, "i8", 2) == 0) {
-                start = current;
-                while(*current && (isalnum(*current) || *current == '-' || *current == '_')) current++;
-                if(!(*current)) { report(line, start, "Missing code"); continue; }
-                if(current - start == 2) token_new(&tokens[n++], line, I8, start, 2);
-                else token_new(&tokens[n++], line, IDENTIFIER, start, (current - start) + 1);
-            }
-
-            else if(strncmp(current, "i16", 3) == 0) {
-                start = current;
-                while(*current && (isalnum(*current) || *current == '-' || *current == '_')) current++;
-                if(!(*current)) { report(line, start, "Missing code"); continue; }
-                if(current - start == 3) token_new(&tokens[n++], line, I16, start, 3);
-                else token_new(&tokens[n++], line, IDENTIFIER, start, (current - start) + 1);     
-            }
-
-            else if(strncmp(current, "i32", 3) == 0) {
-                start = current;
-                while(*current && (isalnum(*current) || *current == '-' || *current == '_')) current++;
-                if(!(*current)) { report(line, start, "Missing code"); continue; }
-                if(current - start == 3) token_new(&tokens[n++], line, I32, start, 3);
-                else token_new(&tokens[n++], line, IDENTIFIER, start, (current - start) + 1);         
-            }*/
-
             else if(strncmp(current, "int", 3) == 0) {
                 start = current;
                 while(*current && (isalnum(*current) || *current == '-' || *current == '_')) current++;
@@ -334,15 +308,14 @@ void run(char* src)
                 if(current - start == 4) token_new(&tokens[n++], line, VOID, start, 4);
                 else token_new(&tokens[n++], line, IDENTIFIER, start, (current - start) + 1);            
             }
-
-            /*else if(strncmp(current, "EOF", 3) == 0) {
-                start = current;
-                while(*current && (isalnum(*current) || *current == '-' || *current == '_')) current++;
-                if(!(*current)) { report(line, start, "Missing code"); continue; }
-                if(current - start == 3) token_new(&tokens[n++], line, T_EOF, start, 3);
-                else token_new(&tokens[n++], line, IDENTIFIER, start, (current - start) + 1);            
-            }*/
-
+                
+            else if(*current == '@' || *current == '#' || *current == '$') {
+                report(line, start, "Unexpected token");
+                current++;
+                has_error = 1;
+                continue;
+            }
+                
             else {
                 // it's an identifier
                 start = current;
@@ -353,6 +326,7 @@ void run(char* src)
         }
     }
 
-    token_new(&tokens[n], line, END, " ", 1);
+    token_new(&tokens[n], line, END, " ", 2);
+    if(has_error) exit(1);
     //print_tokens();
 }
