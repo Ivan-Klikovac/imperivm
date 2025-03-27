@@ -23,6 +23,8 @@ The compiler has static linking capabilities with `--static`, owing to GNU Binut
 
 Several debug/educational options are provided, such as `--verbose-asm`, `--print-blocks`, and `--ir`.
 
+A number of IMPERIVM C source files can be found in the `examples` directory.
+
 ## Frontend
 The lexer, being the first part of the project made, was done somewhat shoddily, but it works as expected for any sane input.
 
