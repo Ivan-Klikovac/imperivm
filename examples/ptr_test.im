@@ -1,0 +1,13 @@
+void* malloc(long n);
+void free(void* ptr);
+
+int main(void)
+{
+	long* mem = malloc(128);
+	*mem = 1;
+	*(mem + 8) = 2;
+	long member1 = *mem;
+	long member2 = *(mem + 8);
+	free(mem);
+	return member1 + member2;
+}

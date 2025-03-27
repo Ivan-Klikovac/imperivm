@@ -1,0 +1,16 @@
+int main()
+{
+	long total = 1;
+	long prev = 0;
+	long n = 0;
+
+	while(n - 10) {
+		long old_prev = prev;
+		prev = total;
+		total = prev + old_prev;
+		
+		n = n + 1;
+	}
+	
+	return total;
+}

@@ -1,0 +1,13 @@
+int global = 5;
+
+void somefn(void)
+{
+	global = global + 1;
+	return;
+}
+
+int main(void)
+{
+	somefn();
+	return global;
+}

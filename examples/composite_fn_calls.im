@@ -1,0 +1,13 @@
+long a = 0;
+
+long function(long a)
+{
+	return a + 1;
+}
+
+int main(void)
+{
+	long b = 5;
+	long result = function(function(a) + function(b));
+	return result;
+}

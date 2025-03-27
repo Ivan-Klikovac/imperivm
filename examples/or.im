@@ -1,0 +1,13 @@
+void putchar(int c);
+
+long print_digit(long a)
+{
+	putchar(a + 48);
+	return a;
+}
+
+int main(void)
+{
+	print_digit(3) || print_digit(1);
+	return 0;
+}

@@ -1,0 +1,16 @@
+long var = 10;
+
+long somefn(long somearg)
+{
+	long some_local = 1;
+	long res = somearg + some_local + var;
+	return res;
+}
+
+int main()
+{
+	long result = somefn(5);
+	result = result + var;
+	return result;
+}
+

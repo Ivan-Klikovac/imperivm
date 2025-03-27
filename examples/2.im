@@ -1,0 +1,11 @@
+long var_global = 10;
+
+long main() {
+	long first = 1;
+	long second = 2;
+	long third = 3;
+	long result = -first + second * third;
+	if(var_global) result = result + var_global;
+	return result;
+}
+
