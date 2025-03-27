@@ -14,6 +14,8 @@ Alternatively, one could compile the project "by hand," with a command like
 
 GCC is assumed to be present on the system, and it's called to assemble and link the assembly code emitted by the compiler. This is not necessary if the option `--asm-only` is given.
 
+It's only possible to compile it on GNU/Linux, as `imc` uses GNU's `getopt_long` for parsing command-line arguments.
+
 ## Usage
 Typical usage would be `./imc [source file] -o [executable]`. The compiler offers a comprehensive help option (`--help`) which informs the user about all the available command-line options.
 
