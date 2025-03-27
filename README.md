@@ -17,7 +17,7 @@ GCC is assumed to be present on the system, and it's called to assemble and link
 It's only possible to compile it on GNU/Linux, as `imc` uses GNU's `getopt_long` for parsing command-line arguments.
 
 ## Usage
-Typical usage would be `./imc [source file] -o [executable]`. The compiler offers a comprehensive help option (`--help`) which informs the user about all the available command-line options.
+Typical usage would be `imc [source file] -o [executable]`. The compiler offers a comprehensive help option (`--help`) which informs the user about all the available command-line options.
 
 The compiler has static linking capabilities with `--static`, owing to GNU Binutils' `ld`.
 
