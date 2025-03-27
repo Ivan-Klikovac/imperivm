@@ -8,7 +8,9 @@ It includes a recursive descent parser on the frontend, a flexible three-address
 Clone the repo, run `meson setup` to create a build directory, and run `meson compile` from that directory.
 Meson and Ninja must be installed on the system.
 
-Alternatively, one could compile the project "by hand," with a command like `gcc main.c frontend/*.c IR/*.c [...] -Iinclude -o imc`, but using the given build system configuration is preferable.
+Alternatively, one could compile the project "by hand," with a command like 
+
+`gcc main.c frontend/*.c IR/*.c [...] -Iinclude -o imc`, but using the given build system configuration is preferable.
 
 GCC is assumed to be present on the system, and it's called to assemble and link the assembly code emitted by the compiler. This is not necessary if the option `--asm-only` is given.
 
